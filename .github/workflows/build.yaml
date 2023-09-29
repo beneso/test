@@ -30,4 +30,4 @@ jobs:
         with:
           #file: ./Dockerfile
           push: false
-          tags: httpserver:${GITHUB_SHA::7},httpserver:latest
+          tags: httpserver:${{GITHUB_SHA::7}},httpserver:latest
