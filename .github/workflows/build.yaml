@@ -15,4 +15,4 @@ jobs:
       - name: Test
         run: go test
       - name: Build
-        run: CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o ./server ./main.go
+        run: CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o ./server ./server.go
