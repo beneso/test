@@ -25,9 +25,14 @@ jobs:
         uses: actions/checkout@v4
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      - name: Build and push image
+      - name: Set outputs
+        id: vars
+        run: echo "sha_short=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
+      #- name: Check outputs
+      #  run: echo ${{ steps.vars.outputs.sha_short }}
+      - name: Build image
         uses: docker/build-push-action@v4
         with:
           #file: ./Dockerfile
           push: false
-          tags: "httpserver:$(echo ${GITHUB_SHA} | cut -c1-8)"
+          tags: httpserver:${{ steps.vars.outputs.sha_short }}
