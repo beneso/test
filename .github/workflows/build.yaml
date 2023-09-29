@@ -1,5 +1,5 @@
 name: build
-run-name: Building
+run-name: Build
 on: [push]
 jobs:
   build:
@@ -12,5 +12,5 @@ jobs:
         with:
           # Semantic version range syntax or exact version of Go
           go-version: '1.21.x'
-      - run: RUN CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o /server ./main.go
+      - run: CGO_ENABLED=0 go build -ldflags '-extldflags "-static"' -o /server ./main.go
 
