@@ -10,7 +10,7 @@ import (
 
 
 func TestHealthHandler(t *testing.T) {
-	expected := "K"
+	expected := "OK"
 	req := httptest.NewRequest(http.MethodGet, "/health", nil)
 	w := httptest.NewRecorder()
 	healthHandler(w, req)
@@ -24,6 +24,6 @@ func TestHealthHandler(t *testing.T) {
 	}
 
 	if string(data) != expected {
-		t.Errorf("Expected OK but got %v", string(data))
+		t.Errorf("Expected %v but got %v", expected, string(data))
 	}
 }
